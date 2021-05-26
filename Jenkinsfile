@@ -8,7 +8,8 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/shilpa12345/k8s.git'
+                checkout scm
+
       }
     }
 
