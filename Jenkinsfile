@@ -29,7 +29,7 @@ stage('Build image') {
         script {
        
         docker.withRegistry('https://qaingest.azurecr.io', 'ssm-acr') {
-          dockerImage.push()
+          sh 'docker push dockerImage'
             } 
                
         }
