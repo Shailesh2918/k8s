@@ -8,7 +8,8 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-                checkout scm
+                        git 'https://github.com/justmeandopensource/playjenkins.git'
+
 
       }
     }
@@ -16,7 +17,7 @@ pipeline {
     
     
 
-    stage('Deploy App') {
+   /* stage('Deploy App') {
       steps {
         script {
         
@@ -25,7 +26,7 @@ pipeline {
     }
         }
       }
-    }
+    }*/
 
   }
 
