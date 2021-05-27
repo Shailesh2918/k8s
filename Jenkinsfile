@@ -28,7 +28,8 @@ stage('Build image') {
         steps{
         script {
         docker.withRegistry('https://qaingest.azurecr.io', 'ssm-acr') {
-            dockerImage.push("latest")
+		dockerImage.push("${env.BUILD_NUMBER}") 
+		dockerImage.push('latest') 
             } 
 	}
 	}
