@@ -24,7 +24,13 @@ stage('Build image') {
       }
     }
     
-    
+    stage('Push image') {
+       
+        docker.withRegistry('https://qaingest.azurecr.io', 'ssm-acr') {
+          dockerImage.push()
+            } 
+                echo "Trying to Push Docker Build to DockerHub"
+    }
 
    /* stage('Deploy App') {
       steps {
