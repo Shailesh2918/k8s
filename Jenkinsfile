@@ -20,7 +20,9 @@ pipeline {
       steps {
         script {
         
-         sh 'kubectl apply -f web.yaml'
+         withKubeConfig([credentialsId: 'ssm-kube-1']) {
+      sh 'kubectl apply -f web.yaml
+    }
         }
       }
     }
