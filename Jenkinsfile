@@ -24,7 +24,7 @@ stage('Build image') {
       }
     }
     
-     stage('Push image') {
+     /*stage('Push image') {
         steps{
         script {
         docker.withRegistry('https://qaingest.azurecr.io', 'ssm-acr') {
@@ -34,7 +34,7 @@ stage('Build image') {
 	}
 	}
                
-    }
+    }*/
 
 
    /* stage('Deploy App') {
