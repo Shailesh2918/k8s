@@ -19,7 +19,7 @@ pipeline {
 stage('Build image') {
       steps{
         script {
-          dockerImage = sh 'sudo podman build -t registry:"$BUILD_NUMBER"'
+          dockerImage = sh 'sudo podman build -t registry:"$BUILD_NUMBER" .'
         }
       }
     }
