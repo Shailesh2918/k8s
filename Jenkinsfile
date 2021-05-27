@@ -25,13 +25,14 @@ stage('Build image') {
     }
     
      stage('Push image') {
-        /* 
-			You would need to first register with DockerHub before you can push images to your account
-		*/
+        steps{
+        script {
         docker.withRegistry('https://qaingest.azurecr.io', 'ssm-acr') {
             dockerImage.push("latest")
             } 
-                echo "Trying to Push Docker Build to DockerHub"
+	}
+	}
+               
     }
 
 
