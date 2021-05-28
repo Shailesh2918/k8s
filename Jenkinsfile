@@ -53,13 +53,13 @@ stage('Build image') {
     } */
 	  
 	  
-	stage('Deploy App') {
+	/*stage('Deploy App') {
       steps {
         script {
           kubernetesDeploy(configs: "web.yaml", kubeconfigId: "ssm-kube-1")
         }
       }
-    }
+    }*/
     
     }
 
