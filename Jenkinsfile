@@ -17,7 +17,7 @@ RESOURCE_GROUP='qa-aks-pot'
  
     stage('Checkout Source') {
       steps {
-                        git 'https://github.com/justmeandopensource/playjenkins.git'
+                        git 'https://github.com/shilpa12345/k8s.git'
 
 
       }
