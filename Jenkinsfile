@@ -17,7 +17,7 @@ pipeline {
 					  def image = docker.build imageWithTag
 					  image.push()
 				  }
-						  }
+						  
 						  }
 						  }
 						  }
