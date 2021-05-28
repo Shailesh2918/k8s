@@ -51,9 +51,9 @@ stage('Build') {
       // push image
       image.push()
     }
-		    }
-    }
-		    }
+   }
+   }
+}
    /*stage('Deploy App') {
       steps {
         script {
