@@ -22,15 +22,15 @@ RESOURCE_GROUP='qa-aks-pot'
 
       }
     }
-/*stage('Build image') {
+stage('Build image') {
       steps{
         script {
           dockerImage = sh 'sudo podman build -t registry:"$BUILD_NUMBER" .'
         }
       }
-    }*/
+    }
     
-     stage('Push image') {
+     /*stage('Push image') {
         steps{
         script {
         docker.withRegistry('https://qaingest.azurecr.io', 'ssm-acr') {
@@ -40,10 +40,10 @@ RESOURCE_GROUP='qa-aks-pot'
 	}
 	}
                
-    }
+    }*/
 
 
-   /* stage('Deploy App') {
+   stage('Deploy App') {
       steps {
         script {
         
@@ -52,8 +52,8 @@ RESOURCE_GROUP='qa-aks-pot'
     }
         }
       }
-    }*/
-
-  }
+    }  
+    
+    }
 
 }
