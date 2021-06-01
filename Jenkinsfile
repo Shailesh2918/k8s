@@ -12,7 +12,7 @@ pipeline {
 		  steps{
 			  script {
 				  
-					  sh 'sudo podman login -u $ACR_USER -p $ACR_PASSWORD https://$ACR_SERVER'
+					  sh 'sudo podman login -u $ACR_USER -p $ACR_PASSWORD $ACR_SERVER'
 					  //def imageWithTag = "$env.ACR_SERVER/$env.WEB_APP:$env.BUILD_NUMBER"
 					  def image = sh 'sudo podman build -t "$ACR_SERVER"/app:"$BUILD_NUMBER" .'
 					  //image.push()
