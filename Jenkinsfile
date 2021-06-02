@@ -1,6 +1,6 @@
 pipeline {
 	agent any
-	def image
+
 
   stages {
 	  stage('Checkout Source') {
@@ -9,7 +9,7 @@ pipeline {
 		  }
 	  }
 	  
-	  stage('Build') {
+	 /* stage('Build') {
 		  steps{
 			  script {
 				  
@@ -21,14 +21,15 @@ pipeline {
 				  
 				 }
 			}
-			 }
+			 } */
 	  
 	  stage('Push image') {
 		  steps{
 			  script {
         
         docker.withRegistry('https://qaingest.azurecr.io', 'ssm-acr') {
-            image.push("${env.BUILD_NUMBER}")
+	    image =  sh 'sudo podman build -t "$ACR_SERVER"/app:"$BUILD_NUMBER" .'
+            //image.push("${env.BUILD_NUMBER}")
             image.push("latest")
             } 
                 echo "Trying to Push Docker Build to registry"
