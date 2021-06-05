@@ -33,6 +33,7 @@ pipeline {
             //image.push("${env.BUILD_NUMBER}")
             //image.push("latest")
 		 sh 'sudo docker login -u $ACR_USER -p $ACR_PASSWORD $ACR_SERVER'
+		sh 'azure login'
 		sh 'az acr build --image $ACR_SERVER"/app:"$BUILD_NUMBER  --registry qaingest.azurecr.io   --file Dockerfile .'
             } 
                 echo "Trying to Push Docker Build to registry"
