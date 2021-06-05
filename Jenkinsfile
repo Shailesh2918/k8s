@@ -35,7 +35,7 @@ pipeline {
 		 sh 'sudo docker login -u $ACR_USER -p $ACR_PASSWORD $ACR_SERVER'
 		sh 'az login'
 		sh 'az account set -s d1804244-6fdc-43d9-a9bb-5f90f355eb66'
-		sh 'az acr build --image $ACR_SERVER"/app:"$BUILD_NUMBER  --registry qaingest.azurecr.io   --file Dockerfile .'
+		sh 'az acr build --image $ACR_SERVER"/app:"$BUILD_NUMBER  --registry acrjenkins.azurecr.io   --file Dockerfile .'
             } 
                 echo "Trying to Push Docker Build to registry"
     }
