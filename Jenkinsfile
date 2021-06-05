@@ -9,7 +9,7 @@ pipeline {
 		  }
 	  }
 	  
-	 stage('Build') {
+	 /*stage('Build') {
 		  steps{
 			  script {
 				  
@@ -22,21 +22,23 @@ pipeline {
 				  
 				 }
 			}
-			 } 
+			 } */
 	  
-	  /*stage('Push image') {
+	  stage('Push image') {
 		  steps{
 			  script {
         
         docker.withRegistry('https://qaingest.azurecr.io', 'ssm-acr') {
-	    image =  sh 'sudo podman build -t "$ACR_SERVER"/app:"$BUILD_NUMBER" .'
+	    //image =  sh 'sudo podman build -t "$ACR_SERVER"/app:"$BUILD_NUMBER" .'
             //image.push("${env.BUILD_NUMBER}")
-            image.push("latest")
+            //image.push("latest")
+		 sh 'sudo docker login -u $ACR_USER -p $ACR_PASSWORD $ACR_SERVER'
+		sh 'az acr build --image $ACR_SERVER"/app:"$BUILD_NUMBER  --registry qaingest.azurecr.io   --file Dockerfile .'
             } 
                 echo "Trying to Push Docker Build to registry"
     }
 		  }
-	  }*/
+	  }
 						  
 }
 						  }
