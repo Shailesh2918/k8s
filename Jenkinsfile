@@ -39,8 +39,8 @@ pipeline {
             } 
                 echo "Trying to Push Docker Build to registry"
     }
-		  }*/
-	  }
+		  }
+	  }*/
 						  
 }
 						  }
