@@ -24,7 +24,7 @@ pipeline {
 			}
 			 } */
 	  
-	  stage('Push image') {
+	  /*stage('Push image') {
 		  steps{
 			  script {
         
@@ -39,7 +39,7 @@ pipeline {
             } 
                 echo "Trying to Push Docker Build to registry"
     }
-		  }
+		  }*/
 	  }
 						  
 }
