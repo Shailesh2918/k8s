@@ -9,6 +9,11 @@ pipeline {
 		  }
 	  }
 	  
+	  stage('kube file') {
+		  steps {
+			  sh 'kubectl apply -f web.yaml'
+		  }
+	  }
 	 /*stage('Build') {
 		  steps{
 			  script {
