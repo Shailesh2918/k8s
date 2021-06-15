@@ -11,8 +11,8 @@ pipeline {
 	  
 	  stage('kube file') {
 		  steps {
-			  sh 'az aks get-credentials --resource-group qa-aks-pot --name aksqa'
-			  sh 'kubectl apply -f web.yaml'
+			  sh "az aks get-credentials --resource-group qa-aks-pot --name aksqa"
+			  sh "kubectl apply -f web.yaml"
 		  }
 	  }
 	 /*stage('Build') {
