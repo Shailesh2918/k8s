@@ -12,8 +12,8 @@ pipeline {
 	  stage('kube file') {
 		  steps {
 			  //withKubeConfig([credentialsId: 'ssm-kube', serverUrl: 'qaaks-1fe1ee75.aad70bae-5422-4738-a3f0-1c9b1ae4b2ab.privatelink.eastus2.azmk8s.io']) {
-			  sh "az aks get-credentials --resource-group qa-aks-pot --name aksqa"
-			  sh "kubectl apply -f web.yaml"
+			  sh 'az aks get-credentials --resource-group qa-aks-pot --name aksqa'
+			  sh 'kubectl apply -f web.yaml'
 			  //}
 		  }
 	  }
