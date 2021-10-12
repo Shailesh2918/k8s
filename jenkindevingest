@@ -1,0 +1,25 @@
+  
+   node {      
+  // Mark the code checkout 'stage'....        
+    stage('Checkout the dockefile from GitHub') {            
+      git branch: 'docker-file', credentialsId: 'Jenkin-Git', url: 'https://github.com/Shailesh2918/k8s'        
+    }        
+    // Build and Deploy to ACR 'stage'...        
+    stage('Build the Image and Push to Azure Container Registry') {                
+      app = docker.build('devingestshacr.azurecr.io/demo1')                
+      withDockerRegistry([credentialsId: 'ACR-DEV', url: 'https://devingestshacr.azurecr.io']) {                
+      app.push("${env.BUILD_NUMBER}")                
+      app.push('latest')                
+      }        
+     }        
+     stage('Build the Kubernetes YAML Files for New App') {
+<The code here will differ depending on the YAMLs used for the application>        
+  }        
+  stage('Delpoying the App on Azure Kubernetes Service') {            
+    app = docker.image('devingestshacr.azurecr.io/demo1:latest')            
+    withDockerRegistry([credentialsId: 'ACR-DEV', url: 'https://devingestshacr.azurecr.io']) {            
+    app.pull()            
+    sh "kubectl create -f ."            
+    }       
+   }    
+   
