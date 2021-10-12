@@ -2,7 +2,7 @@
  node {      
   // Mark the code checkout 'stage'....        
     stage('Checkout the dockefile from GitHub') {            
-      git branch: 'docker-file', credentialsId: 'Jenkin-Git', url: 'https://github.com/Shailesh2918/k8s'        
+      git branch: 'dockerfile', credentialsId: 'Jenkin-Git', url: 'https://github.com/Shailesh2918/k8s'        
     }        
     // Build and Deploy to ACR 'stage'...        
     stage('Build the Image and Push to Azure Container Registry') {                
