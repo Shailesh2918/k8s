@@ -20,5 +20,6 @@
     app.pull()            
     sh "kubectl create -f ."            
     }       
-   }    
+   } 
+ }
    
