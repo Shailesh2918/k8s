@@ -6,8 +6,8 @@
     }        
     // Build and Deploy to ACR 'stage'...        
     stage('Build the Image and Push to Azure Container Registry') {                
-      app = docker.build('devingestshacr.azurecr.io/demo1')                
-      withDockerRegistry([credentialsId: 'ACR-DEV', url: 'https://devingestshacr.azurecr.io']) {                
+      app = docker.build('devaksingr.azurecr.io/demo1')                
+      withDockerRegistry([credentialsId: 'ACR-DEV', url: 'https://devaksingr.azurecr.io']) {                
       app.push("${env.BUILD_NUMBER}")                
       app.push('latest')                
       }        
@@ -15,8 +15,8 @@
      stage('Build the Kubernetes YAML Files for New App') {
    }        
   stage('Delpoying the App on Azure Kubernetes Service') {            
-    app = docker.image('devingestshacr.azurecr.io/demo1:latest')            
-    withDockerRegistry([credentialsId: 'ACR-DEV', url: 'https://devingestshacr.azurecr.io']) {            
+    app = docker.image('devaksingr.azurecr.io/demo1:latest')            
+    withDockerRegistry([credentialsId: 'ACR-DEV', url: 'https://devaksingr.azurecr.io']) {            
     app.pull()            
     sh "kubectl create -f ."            
     }       
