@@ -1,0 +1,57 @@
+
+pipeline {
+	agent any
+
+
+  stages {
+	  stage('Checkout Source') {
+		  steps {
+			  checkout scm
+		  }
+	  }
+	  
+	  stage('kube file') {
+		  steps {
+			  //withKubeConfig([credentialsId: 'SSM-Kube-Dev', serverUrl: 'devaks-5db156bf.bd5c192b-453e-4aa2-a0ec-e3ddf1274e8d.privatelink.eastus2.azmk8s.io']) {
+			  sh 'az aks get-credentials --resource-group dev-aks-pot --name aksingestshdev'
+			  sh 'kubectl apply -f web.yaml'
+			  //}
+		  }
+	  }
+	 /*stage('Build') {
+		  steps{
+			  script {
+				  
+					  sh 'sudo docker login -u $ACR_USER -p $ACR_PASSWORD $ACR_SERVER'
+					  //def imageWithTag = "$env.ACR_SERVER/$env.WEB_APP:$env.BUILD_NUMBER"
+					 //image =  sh 'sudo podman build -t "$ACR_SERVER"/app:"$BUILD_NUMBER" .'
+					  //image.push()
+				         //sh 'sudo docker push "$ACR_SERVER"/app:"$BUILD_NUMBER"'
+					 sh 'az acr build --image $ACR_SERVER"/app:"$BUILD_NUMBER  --registry qaingest.azurecr.io   --file Dockerfile .'
+				  
+				 }
+			}
+			 } */
+	  
+	  /*stage('Push image') {
+		  steps{
+			  script {
+        
+        docker.withRegistry('https://devingestshacr.azurecr.io', 'ssm-acr-dev') {
+	    //image =  sh 'sudo podman build -t "$ACR_SERVER"/app:"$BUILD_NUMBER" .'
+            //image.push("${env.BUILD_NUMBER}")
+            //image.push("latest")
+		 sh 'sudo docker login -u $ACR_USER -p $ACR_PASSWORD $ACR_SERVER'
+		sh 'az login'
+		sh 'az account set -s b0137a5b-5478-4826-adbb-f9ad9840d4fe'
+		sh 'az acr build --image $ACR_SERVER"/app:"$BUILD_NUMBER  --registry devingestshacr.azurecr.io  --file Dockerfile .'
+            } 
+                echo "Trying to Push Docker Build to registry"
+    }
+		  }
+	  }*/
+						  
+}
+
+
+
