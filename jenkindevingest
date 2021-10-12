@@ -13,8 +13,7 @@
       }        
      }        
      stage('Build the Kubernetes YAML Files for New App') {
-<The code here will differ depending on the YAMLs used for the application>        
-  }        
+   }        
   stage('Delpoying the App on Azure Kubernetes Service') {            
     app = docker.image('devingestshacr.azurecr.io/demo1:latest')            
     withDockerRegistry([credentialsId: 'ACR-DEV', url: 'https://devingestshacr.azurecr.io']) {            
